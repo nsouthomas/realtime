@@ -9,7 +9,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.channel_layer.group_add(
             self.room_group_name,
-            self.room_name
+            self.channel_name
         )
 
         await self.accept()
@@ -31,9 +31,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
             }
         )
 
-        async def chat_message(self, event):
-            mensagem = event ['message']
+    async def chat_message(self, event):
+        mensagem = event ['message']
 
-            await self.send(text_data=json.dumps({
-                'mensagem': mensagem
-            }))
+        await self.send(text_data=json.dumps({
+            'mensagem': mensagem
+        }))
