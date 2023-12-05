@@ -10,30 +10,42 @@
 
     <body>
         <div class="container"> Qual chat você deseja entrar? <br/>
+            <input id="apelido" type="text" placeholder="Seu apelido...">
             <input id="nome_sala" name="nome_sala" type="text" size="50" placeholder="Nome da sala..."><br/>
             {% buttons %}
                 <input id="botao" class="btn btn-primary" type="button" value="Entrar"/>
             {% endbuttons %}
         </div>
-    <script>
-       document.querySelector('#nome_sala').focus(); 
-       document.querySelector('#nome_sala').onkeyup = function(e){
-            if(e.keycode === 13){
-                document.querySelector('#botao').click();
-            }
-       };
-
-       document.querySelector('#botao').onclick = function(e){
-            var nome_sala = document.querySelector('#nome_sala').value;
-            if(nome_sala != ""){
-                window.location.pathname = '/chat/' + nome_sala + '/';
-            }else{
-                alert('Você precisa informar o nome da sala.');
-                document.querySelector('#nome_sala').focus();
-            }
-       };
-
-    </script>
+        <script>
+            // Foca inicialmente no campo de apelido
+            document.querySelector('#apelido').focus(); 
+        
+            // Evento de tecla para o apelido (opcional, para melhorar a usabilidade)
+            document.querySelector('#apelido').onkeyup = function(e){
+                if(e.keyCode === 13){
+                    document.querySelector('#nome_sala').focus(); 
+                }
+            };
+        
+            // Evento de tecla para o nome da sala
+            document.querySelector('#nome_sala').onkeyup = function(e){
+                if(e.keyCode === 13){
+                    document.querySelector('#botao').click();
+                }
+            };
+        
+            // Evento de clique para o botão de entrar
+            document.querySelector('#botao').onclick = function(e){
+                var apelido = document.querySelector('#apelido').value.trim();
+                var nome_sala = document.querySelector('#nome_sala').value.trim();
+                if(nome_sala != "" && apelido != ""){
+                    // Redireciona para a URL com o nome da sala e o apelido
+                    window.location.pathname = '/chat/' + nome_sala + '/' + apelido + '/';
+                }else{
+                    alert('Você precisa informar o apelido e o nome da sala.');
+                }
+            };
+        </script>
     {%bootstrap_javascript jquery='full' %}
     </body>
 </html>
