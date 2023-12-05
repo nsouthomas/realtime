@@ -1,21 +1,53 @@
 {% load bootstrap4 %}
 
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Chat</title>
-        {% bootstrap_css %}
-    </head>
-
-    <body>
-        <div class="container"> Qual chat você deseja entrar? <br/>
-            <input id="apelido" type="text" placeholder="Seu apelido...">
-            <input id="nome_sala" name="nome_sala" type="text" size="50" placeholder="Nome da sala..."><br/>
-            {% buttons %}
-                <input id="botao" class="btn btn-primary" type="button" value="Entrar"/>
-            {% endbuttons %}
+<head>
+    <meta charset="utf-8" />
+    <title>Chat</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        .centered-form {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+        }
+        .form-icon {
+            background-color: #6c757d;
+            border-radius: 50%;
+            color: white;
+            font-size: 24px;
+            height: 50px;
+            width: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="centered-form">
+        <div class="text-center mb-3">
+            <div class="form-icon">
+                <i class="fas fa-cloud"></i> <!-- FontAwesome ícone de nuvem -->
+            </div>
         </div>
+        <div class="text-center mb-4">
+            <h3>Please sign in</h3>
+        </div>
+        <input id="apelido" class="form-control mb-2" type="text" placeholder="Seu apelido...">
+        <input id="nome_sala" class="form-control mb-2" type="text" placeholder="Nome da sala...">
+        <button id="botao" class="btn btn-lg btn-primary btn-block" type="button">Entrar</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
         <script>
             // Foca inicialmente no campo de apelido
             document.querySelector('#apelido').focus(); 
